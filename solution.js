@@ -5,13 +5,11 @@
  *
  * @consider https://github.com/nheisterkamp/hackerrank
  *
- * @author Artūrs Gailītis
+ * @author Arturs Gailitis
  * @email  arturs.gailitis@gmail.com
  */
 
-// TODO: an enum in TypeScript
-
-// Nice names for command codes
+// Nice names for command codes (an enum in TypeScript)
 const CMD_APPEND = '1';
 const CMD_DELETE = '2';
 const CMD_PRINT_AT = '3';
