@@ -18,6 +18,7 @@ const CMD_PRINT_AT = '3';
 const CMD_UNDO = '4';
 
 // MARK: state (sorry, it's global for simplicity)
+// ---------------------------------------------------------------------------
 
 let editsExpected = 0;
 let linesReceived = 0;
@@ -43,19 +44,20 @@ let contents = "";
 //   contents accordingly
 let undoStack = [];
 
-// MARK: processing I/O
+// MARK: processing I/O (main entry point)
+// ---------------------------------------------------------------------------
 
 process.stdin.setEncoding("ascii");
 process.stdin.resume();
 
 readline = require("readline");
-const rl = readline.createInterface({
+const lineReader = readline.createInterface({
       input: process.stdin,
       output: process.stdout,
       terminal: false
 });
 
-rl.on('line', line => {
+lineReader.on('line', line => {
     linesReceived++;
 
     if (1 == linesReceived) {
@@ -70,6 +72,7 @@ rl.on('line', line => {
 
     // a command received
     if (linesReceived - 1 > editsExpected) {
+        lineReader.close();
         process.exit(); // all is said and done
     }
 
@@ -87,6 +90,7 @@ rl.on('line', line => {
 });
 
 // MARK: process commands
+// ---------------------------------------------------------------------------
 
 /**
  * @param string line consist of "[1-4] arg?"
