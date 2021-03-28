@@ -1,3 +1,5 @@
+#! /usr/bin/env node
+
 /**
  * @see https://www.hackerrank.com/challenges/simple-text-editor/problem
  *
